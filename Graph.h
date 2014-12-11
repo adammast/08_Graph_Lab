@@ -44,6 +44,13 @@ public:
   // If there are no such edges, then don't do anything.
   void removeEdge(int node1, int node2);
 
+  //These added for the traversal methods
+  void DFTUtil(int v, bool visited[]);
+
+  void DFT();
+
+  int numVertices;
+
 private:
   std::vector<Node> adjList;	
 };

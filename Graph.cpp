@@ -4,6 +4,7 @@
  * Sources  : All code is original
  */
 #include "Graph.h"
+#include <iostream>
 
 Graph::Graph(unsigned int numNodes){
 	adjList.resize(numNodes);
@@ -74,3 +75,25 @@ void Graph::removeEdge(int node1, int node2){
 		}
 	}
 }
+
+// original code found on www.geeksforgeeks.org slightly modified by me
+void Graph::DFTUtil(int V, bool visited[]){
+		visited[V] = true;
+		std::cout << V << " ";
+		int counter = 0;
+		std::vector<Node>::iterator i;
+
+		for (i = adjList.begin(); i < adjList.end(); i++, counter++){
+			if (!visited[counter])
+				DFTUtil(counter, visited);
+		}
+	}
+
+	void Graph::DFT(){
+		bool* visited = new bool[numVertices];
+		for (int i = 0; i < numVertices; i++){
+			visited[i] = false;
+		}
+
+		DFTUtil(0, visited);
+	}
